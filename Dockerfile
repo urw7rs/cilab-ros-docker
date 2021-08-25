@@ -29,7 +29,7 @@ WORKDIR /home/ros_ws
 # You should now be able to compile the packages using catkin
 
 # fixes fatal error error: exploration_msgs/ExploreAction.h: No such file or directory
-RUN /bin/bash -c '. /opt/ros/melodic/setup.bash; cd /home/ros_ws; catkin_make --only-pkg-with-deps exploration_msgs && catkin_make -DCATKIN_WHITELIST_PACKAGES=""'
+RUN /bin/bash -c '. /opt/ros/melodic/setup.bash; catkin_make --only-pkg-with-deps exploration_msgs && catkin_make -DCATKIN_WHITELIST_PACKAGES=""'
 
 RUN echo "source /home/ros_ws/devel/setup.bash" >> ~/.bashrc
 
@@ -61,8 +61,8 @@ RUN git clone -b melodic https://github.com/ros-perception/vision_opencv.git
 
 WORKDIR /home/catkin_build_ws
 
-RUN /bin/bash -c '. /opt/ros/melodic/setup.bash; catkin build cv_bridge' 
+RUN /bin/bash -c '. /opt/ros/melodic/setup.bash; catkin build cv_bridge'
 
 RUN echo "source /home/catkin_build_ws/install/setup.bash --extend" >> ~/.bashrc
 
-WORKDIR /home
+WORKDIR /home/ros_ws
